@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>registration_form</title>
+	
+</head>
+<body>
+	<p id="message"></p>
+<form name="myForm" action=" " onsubmit="return validateForm()" method="post" >
+	
+	<label for=fname>FirstName:</label>	
+	 	<input type="text" name="fname" id="fname" placeholder="enter a firstname" min="3" max="10"><br><br>
+	<label for=fname1>LastName:</label>	
+		<input type="text" name="fname1" id="fname1"  placeholder="enter a lastname"><br><br>
+	<label for=email>Email:</label>	
+		<input type="email" name="email" id="email"  placeholder="enter a email"><br><br>
+	<label for=fname2>Phone:</label>	
+		<input type="text" name="fname2"  id="fname2" placeholder="enter a Phonenumber"><br><br>
+	<label for=password>Password:</label>	
+		<input type="password" name="password" id="password"  placeholder="enter a password"><br><br>
+
+	<input type="submit" onclick="validateForm()">
+</form>
+	<script>
+		function validateForm() {
+      var x = document.forms["myForm"]["fname"].value;
+	if (x == "") {
+   document.getElementById("message").innerHTML="please fill the firstname";
+    return false;
+}
+if(x.length<4){
+	 document.getElementById("message").innerHTML="firstname must be 4 characters";
+    return false;
+}
+if(x.length>10){
+	 document.getElementById("message").innerHTML="firstname must be 10 characters";
+    return false;
+}
+ var y = document.forms["myForm"]["fname1"].value;
+   if (y == "") {
+   document.getElementById("message").innerHTML="please fill the LastName";
+    return false;
+  }
+  if(y.length<4){
+	 document.getElementById("message").innerHTML="lastname must be 4 characters";
+    return false;
+}
+if(y.length>10){
+	 document.getElementById("message").innerHTML="lastname must be 10 characters";
+    return false;
+}
+   var z = document.forms["myForm"]["email"].value;
+   if (z == "") {
+   document.getElementById("message").innerHTML="please fill the email";
+    return false;
+  }if(z.indexOf('@')<=0){
+  	document.getElementById("message").innerHTML="invalid @ position";
+  }
+var i = document.forms["myForm"]["fname2"].value;
+	if (i == "") {
+    document.getElementById("message").innerHTML="please fill the mobile number";
+    return false;
+  }
+  if(isNaN(i)){
+  	document.getElementById("message").innerHTML="enter only numeric value";
+  	return false;
+  }
+  if(i.length<10){
+  	document.getElementById("message").innerHTML="mobile number must be 10 digits";
+  	return false;
+  }
+   if(i.length>10){
+  	document.getElementById("message").innerHTML="mobile number must be 10 digits";
+  	return false;
+  }
+  if((i.charAt(0)!=9) && (i.charAt(0)!=8) && (i.charAt(0)!=7) && (i.charAt(0)!=7)){
+  	document.getElementById("message").innerHTML="mobile number must start with 6,7,8 and 9";
+  	return false;
+  }
+ 
+
+  var j = document.forms["myForm"]["password"].value;
+  if (j == "") {
+   document.getElementById("message").innerHTML="please fill the password";
+    return false;
+  } 
+   if(j.length<8){
+  	document.getElementById("message").innerHTML="password must be atleast 8 ";
+  	return false;
+  }
+  if(j.length>14){
+  	document.getElementById("message").innerHTML="password must be max 14 ";
+  	return false;
+  }
+  if(j.search(/[0-9]/)==-1){
+  	document.getElementById("message").innerHTML="please write password of atleast 1 numeric character";
+     return false;
+  }
+  if(j.search(/[a-z]/)==-1){
+  	document.getElementById("message").innerHTML="please write password of atleast 1 lower case letter";
+     return false;
+  }
+ if(j.search(/[A-Z]/)==-1){
+  	document.getElementById("message").innerHTML="please write password of atleast 1 upper case letter";
+     return false;
+  }
+  if(j.search(/[!\@\#\$\%\^\&\*\(\)\-\_\=\+\?\>\<]/)==-1){
+  	document.getElementById("message").innerHTML="please write password of atleast 1 special case letter";
+     return false;
+  }
+}
+	</script>
+</body>
+</html>
